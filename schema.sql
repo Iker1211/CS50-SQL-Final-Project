@@ -80,28 +80,28 @@ CREATE TABLE "inteligencia" (
     FOREIGN KEY ("candidato_id") REFERENCES "candidatos"("id")
 );
 
--- -- 5. GESTIÓN DE EMPLEADOS (PLANTILLA)
--- CREATE TABLE "empleados" (
---     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
---     "candidato_id" INTEGER UNIQUE NOT NULL,
---     "numero_empleado" TEXT UNIQUE,
---     "departamento_id" INTEGER,
---     "cargo_id" INTEGER,
---     "fecha_ingreso" DATE NOT NULL,
---     "tipo_contrato" TEXT,
---     "salario_base" REAL,
---     "estado" TEXT DEFAULT 'Activo',
---     FOREIGN KEY ("candidato_id") REFERENCES "candidatos"("id"),
---     FOREIGN KEY ("departamento_id") REFERENCES "departamentos"("id"),
---     FOREIGN KEY ("cargo_id") REFERENCES "cargos"("id")
--- );
+-- 5. GESTIÓN DE EMPLEADOS (PLANTILLA)
+CREATE TABLE "empleados" (
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "candidato_id" INTEGER UNIQUE NOT NULL,
+    "numero_empleado" TEXT UNIQUE,
+    "departamento_id" INTEGER,
+    "cargo_id" INTEGER,
+    "fecha_ingreso" DATE NOT NULL,
+    "tipo_contrato" TEXT,
+    "salario_base" REAL,
+    "estado" TEXT DEFAULT 'Activo',
+    FOREIGN KEY ("candidato_id") REFERENCES "candidatos"("id"),
+    FOREIGN KEY ("departamento_id") REFERENCES "departamentos"("id"),
+    FOREIGN KEY ("cargo_id") REFERENCES "cargos"("id")
+);
 
--- CREATE TABLE "historial_laboral" (
---     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
---     "empleado_id" INTEGER NOT NULL,
---     "fecha_cambio" DATE DEFAULT CURRENT_DATE,
---     "cargo_anterior_id" INTEGER,
---     "cargo_nuevo_id" INTEGER,
---     "motivo_cambio" TEXT,
---     FOREIGN KEY ("empleado_id") REFERENCES "empleados"("id")
--- );
+CREATE TABLE "historial_laboral" (
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "empleado_id" INTEGER NOT NULL,
+    "fecha_cambio" DATE DEFAULT CURRENT_DATE,
+    "cargo_anterior_id" INTEGER,
+    "cargo_nuevo_id" INTEGER,
+    "motivo_cambio" TEXT,
+    FOREIGN KEY ("empleado_id") REFERENCES "empleados"("id")
+);
